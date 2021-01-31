@@ -1,3 +1,12 @@
+terraform {
+  backend "remote" {
+    organization = "Software-Architecture"
+
+    workspaces {
+      name = "gh-actions-demo"
+    }
+  }
+}
 provider "azurerm" {
   features {}
 }
@@ -46,8 +55,8 @@ resource "azurerm_linux_virtual_machine" "main" {
   resource_group_name             = azurerm_resource_group.main.name
   location                        = azurerm_resource_group.main.location
   size                            = "Standard_B1s"
-  admin_username                  = "${var.azure_username}"
-  admin_password                  = "${var.azure_password}"
+  admin_username                  = var.azure_username
+  admin_password                  = var.azure_password
   disable_password_authentication = false
   network_interface_ids = [
     azurerm_network_interface.main.id,
@@ -77,8 +86,8 @@ resource "azurerm_linux_virtual_machine" "main" {
 
     connection {
       host     = self.public_ip_address
-      user     = "${var.azure_username}"
-      password = "${var.azure_password}"
+      user     = var.azure_username
+      password = var.azure_password
     }
   }
 }
