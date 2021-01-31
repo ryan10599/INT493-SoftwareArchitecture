@@ -1,12 +1,3 @@
-terraform {
-  backend "remote" {
-    organization = "Software-Architecture"
-
-    workspaces {
-      name = "gh-actions-demo"
-    }
-  }
-}
 variable "git_username" {
   description = "username for clone repo from github"
   default     = ""
