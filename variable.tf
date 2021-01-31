@@ -1,28 +1,37 @@
+terraform {
+  backend "remote" {
+    organization = "Software-Architecture"
+
+    workspaces {
+      name = "gh-actions-demo"
+    }
+  }
+}
 variable "git_username" {
-    description = "username for clone repo from github"
-    default = ""
-    type = string
-    sensitive = true
+  description = "username for clone repo from github"
+  default     = ""
+  type        = string
+  sensitive   = true
 }
 
 variable "git_password" {
   description = "password for clone repo from github"
-  default = ""
-  type = string
-  sensitive = true
+  default     = ""
+  type        = string
+  sensitive   = true
 }
 
 variable "azure_username" {
   description = "Username for remote to azure server"
-  default = ""
-  type = string
-  sensitive = true
+  default     = ""
+  type        = string
+  sensitive   = true
 }
 
 variable "azure_password" {
-    description = "Password for remtoe to azure server"
-    default = ""
-    type = string
-    sensitive = true
-  
+  description = "Password for remtoe to azure server"
+  default     = ""
+  type        = string
+  sensitive   = true
+
 }
