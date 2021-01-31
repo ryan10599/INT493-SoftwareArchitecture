@@ -46,8 +46,8 @@ resource "azurerm_linux_virtual_machine" "main" {
   resource_group_name             = azurerm_resource_group.main.name
   location                        = azurerm_resource_group.main.location
   size                            = "Standard_B1s"
-  admin_username                  = "${var.azure_username}"
-  admin_password                  = "${var.azure_password}"
+  admin_username                  = "${var.azure_remote_account.username}"
+  admin_password                  = "${var.azure_remote_account.password}"
   disable_password_authentication = false
   network_interface_ids = [
     azurerm_network_interface.main.id,
@@ -68,7 +68,7 @@ resource "azurerm_linux_virtual_machine" "main" {
   provisioner "remote-exec" {
     inline = [
       "sudo apt update", "sudo apt install -y nodejs", "sudo apt install -y npm",
-      "git clone https://${var.git_username}:${var.git_password}@github.com/ryan10599/INT493-SoftwareArchitecture.git",
+      "git clone https://${var.git_acc.username}:${var.git_acc.password}@github.com/ryan10599/INT493-SoftwareArchitecture.git",
       "cd INT493-SoftwareArchitecture/Lab1/demo1",
       "npm install",
       "sudo npm install -g pm2",
@@ -77,8 +77,8 @@ resource "azurerm_linux_virtual_machine" "main" {
 
     connection {
       host     = self.public_ip_address
-      user     = "${var.azure_username}"
-      password = "${var.azure_password}"
+      user     = "${var.azure_remote_account.username}"
+      password = "${var.azure_remote_account.password}"
     }
   }
 }
