@@ -24,6 +24,7 @@ app.route("/msg").get((req,res)=>{
 })
 
 app.route("/msg").post((req, res) => {
+  console.log('test')
   let msg = req.body.message;
   let count = 0;
   let length = dataArray.length;
