@@ -8,6 +8,11 @@
 #   }
 # }
 provider "azurerm" {
+  version = "=2.4.0"
+  subscription_id = "32341447-fc9c-4b87-a11b-2d2e095ac487"
+  client_id = "3dccc277-e108-4a6e-a8d7-badd797bfd68"
+  client_secret = "qMxSk1eTj1Rd0vEDak6rU.hSboLlJ3i__p"
+  tenant_id = "6f4432dc-20d2-441d-b1db-ac3380ba633d"
   features {}
 }
 
@@ -77,11 +82,12 @@ resource "azurerm_linux_virtual_machine" "main" {
   provisioner "remote-exec" {
     inline = [
       "sudo apt update", "sudo apt install -y nodejs", "sudo apt install -y npm",
-      "git clone https://${var.git_username}:${var.git_password}@github.com/ryan10599/INT493-SoftwareArchitecture.git",
+      "git clone https://github.com/ryan10599/INT493-SoftwareArchitecture.git",
+      "sudo mv hello_node.service /lib/systemd/system/hello_node.service",
       "cd INT493-SoftwareArchitecture/Lab1/demo1",
       "npm install",
-      "sudo npm install -g pm2",
-      "pm2 start app.js"
+      "sudo systemctl start hello_node",
+      "sudo systemctl enable hello_node"
     ]
 
     connection {

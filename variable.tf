@@ -12,13 +12,13 @@ variable "git_password" {
 
 variable "azure_username" {
   description = "Username for remote to azure server"
-  default     = ""
+  default     = "azureuser"
   sensitive   = true
 }
 
 variable "azure_password" {
   description = "Password for remtoe to azure server"
-  default     = ""
+  default     = "azureuser@123"
   sensitive   = true
 
 }
