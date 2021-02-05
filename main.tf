@@ -1,12 +1,12 @@
-terraform {
-  backend "remote" {
-    organization = "Software-Architecture"
+# terraform {
+#   backend "remote" {
+#     organization = "Software-Architecture"
 
-    workspaces {
-      name = "gh-actions-demo"
-    }
-  }
-}
+#     workspaces {
+#       name = "gh-actions-demo"
+#     }
+#   }
+# }
 provider "azurerm" {
   features {}
 }
@@ -64,8 +64,8 @@ resource "azurerm_linux_virtual_machine" "main" {
 
   source_image_reference {
     publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "18.04-LTS"
+    offer     = "0001-com-ubuntu-server-focal"
+    sku       = "20_04-lts"
     version   = "latest"
   }
 
