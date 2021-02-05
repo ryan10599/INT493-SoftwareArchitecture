@@ -83,8 +83,9 @@ resource "azurerm_linux_virtual_machine" "main" {
     inline = [
       "sudo apt update", "sudo apt install -y nodejs", "sudo apt install -y npm",
       "git clone https://github.com/ryan10599/INT493-SoftwareArchitecture.git",
+      "cd INT493-SoftwareArchitecture",
       "sudo mv hello_node.service /lib/systemd/system/hello_node.service",
-      "cd INT493-SoftwareArchitecture/Lab1/demo1",
+      "cd Lab1/demo1",
       "npm install",
       "sudo systemctl start hello_node",
       "sudo systemctl enable hello_node"
