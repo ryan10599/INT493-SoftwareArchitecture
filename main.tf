@@ -8,11 +8,11 @@
 #   }
 # }
 provider "azurerm" {
-  version = "=2.4.0"
+  version         = "=2.4.0"
   subscription_id = "32341447-fc9c-4b87-a11b-2d2e095ac487"
-  client_id = "3dccc277-e108-4a6e-a8d7-badd797bfd68"
-  client_secret = "qMxSk1eTj1Rd0vEDak6rU.hSboLlJ3i__p"
-  tenant_id = "6f4432dc-20d2-441d-b1db-ac3380ba633d"
+  client_id       = "3dccc277-e108-4a6e-a8d7-badd797bfd68"
+  client_secret   = "qMxSk1eTj1Rd0vEDak6rU.hSboLlJ3i__p"
+  tenant_id       = "6f4432dc-20d2-441d-b1db-ac3380ba633d"
   features {}
 }
 
