@@ -1,0 +1,14 @@
+[Unit]
+Description=app.js - making your environment variables rad
+Documentation=https://example.com
+After=network.target
+
+[Service]
+Environment=NODE_PORT=8080
+Type=simple
+User=azureuser
+ExecStart=/usr/bin/node /home/azureuser/INT493-SoftwareArchitecture/Lab1/demo1/app.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
